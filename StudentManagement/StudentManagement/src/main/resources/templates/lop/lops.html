@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Danh sách lớp</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+  <h3>Danh sách lớp học</h3>
+  <hr/>
+  <a th:href="@{/test/create}" class="btn btn-success btn-sm mb-4">Thêm mới</a>
+  <table class="table table-bordered table-striped">
+    <thead class="table-info">
+    <tr>
+      <td>
+        Mã lớp
+      </td>
+      <td>
+        Tên lớp
+      </td>
+      <td>
+        Mã khoa
+      </td>
+      <td>
+       Mã hệ đào tạo
+      </td>
+      <td>
+        Mã khóa học
+      </td>
+      <td>
+        Xử lý
+      </td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student : ${lopDTOs}">
+      <td th:text="${student.getmalop()}" />
+      <td th:text="${student.gettenLop()}" />
+      <td th:text="${student.getmakhoa()}" />
+      <td th:text="${student.getmaHeDt()}" />
+      <td th:text="${student.getmaKhoaHoc()}" />
+      <td>
+        <a th:href="@{/test/pre(id=${student.getmalop()})}" class="btn btn-info btn-sm">
+          Chỉnh sửa
+        </a>
+        <a th:href="@{/test/total/{id}(id=${student.getmalop()})}" class="btn btn-danger btn-sm" >
+          Tổng thành viên
+        </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
